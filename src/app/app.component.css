@@ -1,0 +1,10 @@
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 30;
+    color: white;
+    padding: 15px;
+}
+.top-bar{
+    background: rgb(25, 63, 107);
+    margin-top: 0px;
+}

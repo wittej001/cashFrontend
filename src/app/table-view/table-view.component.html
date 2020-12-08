@@ -1,12 +1,13 @@
 
+<h3>Enter information below to create a new loan:</h3>
 <label>Loan amount:
-  <input type="number" #balance />
+  <input type="number" onkeyup="this.value.toFixed(2); if(this.value<0){this.value= this.value * -1}; " #balance />
 </label>
 <label>Term/Duration of Loan:
-  <input type="number" #term />
+  <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
 </label>
 <label>Interest:
-  <input type="number"#interest />
+  <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #interest />
 </label>
 <button (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
   Add Loan
@@ -27,24 +28,33 @@
       <td>${{entry.principalPayment}}</td>
       <td class="balance">${{entry.remainingBalance}}</td>
     </tr>
-  </tbody>
-</table>
-
-<table *ngIf="loans.length > 1">
-  <caption>Aggregate pool</caption>
-  <tr>
-    <th>Month</th>
-    <th>Interest</th>
-    <th>Principal</th>
-    <th>Remaining Balance</th>
-  </tr>
-  <tbody>
-    <tr *ngFor="let entry of aggregate?.payments">
-      <td>{{entry.month}}</td>
-      <td>${{entry.interestPayment}}</td>
-      <td>${{entry.principalPayment}}</td>
-      <td class="balance">${{entry.remainingBalance}}</td>
+    <tbody>
+      <tr *ngFor="let entry of loan.payments">
+        <td>{{entry.month}}</td>
+        <td>${{entry.interestPayment}}</td>
+        <td>${{entry.principalPayment}}</td>
+        <td class="balance">${{entry.remainingBalance}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table *ngIf="loans.length > 1">
+    <caption>Aggregate pool</caption>
+    <tr>
+      <th>Month</th>
+      <th>Interest</th>
+      <th>Principal</th>
+      <th>Remaining Balance</th>
     </tr>
-  </tbody>
+    <tbody>
+      <tr *ngFor="let entry of aggregate?.payments">
+        <td>{{entry.month}}</td>
+        <td>${{entry.interestPayment}}</td>
+        <td>${{entry.principalPayment}}</td>
+        <td class="balance">${{entry.remainingBalance}}</td>
+      </tr>
+    </tbody>
+  
+  </table>
+</div>
 
-</table>

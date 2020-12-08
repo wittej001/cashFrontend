@@ -25,8 +25,9 @@ export class TableViewComponent implements OnInit {
   newLoan(principal: string, term: string, rate: string){
     //as unkown as Loan was a quickfix... 
     this.loanSerivce.addLoan({ principal, rate, term } as unknown as Loan)
-      .subscribe();
-    this.getAllData();
+      .subscribe(() => 
+        {this.getAllData();
+      });
   }
 
   deleteLoan(loan : Loan){
