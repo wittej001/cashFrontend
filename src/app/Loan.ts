@@ -3,5 +3,6 @@ export interface Loan{
     principal : number;
     rate : number;
     term : number;
-    cashFlow : any[];
+    payments : any[];
+    type: string;
 };
