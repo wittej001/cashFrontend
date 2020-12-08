@@ -46,9 +46,9 @@
     <tbody>
       <tr *ngFor="let entry of loan.payments">
         <td>{{entry.month}}</td>
-        <td>${{entry.interestPayment}}</td>
-        <td>${{entry.principalPayment}}</td>
-        <td class="balance">${{entry.remainingBalance}}</td>
+        <td>${{entry.interestPayment.toFixed(2)}}</td>
+        <td>${{entry.principalPayment.toFixed(2)}}</td>
+        <td class="balance">${{entry.remainingBalance.toFixed(2)}}</td>
       </tr>
     </tbody>
   </table>
@@ -64,9 +64,9 @@
     <tbody>
       <tr *ngFor="let entry of aggregate?.payments">
         <td>{{entry.month}}</td>
-        <td>${{entry.interestPayment}}</td>
-        <td>${{entry.principalPayment}}</td>
-        <td class="balance">${{entry.remainingBalance}}</td>
+        <td>${{entry.interestPayment.toFixed(2)}}</td>
+        <td>${{entry.principalPayment.toFixed(2)}}</td>
+        <td class="balance">${{entry.remainingBalance.toFixed(2)}}</td>
       </tr>
     </tbody>
   
