@@ -8,14 +8,14 @@
     <div class='input-wrapper left'>
       <div class='flex'>
         <label>Loan amount:
-          <input type="number" #balance />
+          <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
         </label>
       </div>
     </div>
     <div class='input-wrapper'>
       <div class='flex'>
         <label>Term/Duration of Loan:
-          <input type="number" #term />
+          <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
         </label>
       </div>
     </div>
