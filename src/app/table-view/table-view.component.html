@@ -1,0 +1,29 @@
+
+<label>Loan amount:
+    <input type="number" step="any" #balance />
+</label>
+<label>Term/Duration of Loan:
+    <input type="number" #term />
+</label>
+<label>Interest:
+    <input type="number" step="any" #interest />
+  </label>
+<button (click)="newLoan(balance.value, term.value, interest.value);">
+    Add Loan
+</button>
+
+<table *ngFor="let loan of loans; let i = index">
+    <caption>Loan {{i+1}}</caption>
+    <tr>
+      <th>Month</th>
+      <th>Interest</th>
+      <th>Principal</th>
+      <th>Remaining Balance</th>
+    </tr>
+    <tr *ngFor="let entry of loan.cashflow">
+      <td>{{entry.month}}</td>
+      <td>{{entry.interest}}</td>
+      <td>{{entry.principal}}</td>
+      <td>{{entry.remaining_balance}}</td>
+    </tr>
+  </table>
