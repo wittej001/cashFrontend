@@ -30,19 +30,24 @@ export class TableViewComponent implements OnInit {
   }
 
   deleteLoan(loan : Loan){
-    this.loans = this.loans?.filter(l => l !== loan);
-    this.loanSerivce.deleteLoan(loan).subscribe();
-    this.getAllData();
+    this.loanSerivce.deleteLoan(loan)
+      .subscribe(() => {
+        this.getAllData();
+      });
+    
   }
 
   getAllData() : void{
     this.loanSerivce.getAllData()
-    .subscribe(AllData => this.AllData = AllData);
+    .subscribe(AllData => {
+      this.AllData = AllData
+      if (this.AllData.length > 1){
+        this.aggregate = this.AllData?.pop();
+      }
+      this.loans = this.AllData;
+    });
 
-    if (this.AllData.length > 1){
-      this.aggregate = this.AllData?.pop();
-    }
-    this.loans = this.AllData;
+    
   }
 }
 
