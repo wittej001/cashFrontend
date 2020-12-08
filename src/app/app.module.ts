@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoanDetailComponent } from './loan-detail/loan-detail.component';
 import { TableViewComponent } from './table-view/table-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoanDetailComponent,
-    TableViewComponent
+    TableViewComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

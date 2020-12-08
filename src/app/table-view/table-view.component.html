@@ -1,50 +1,76 @@
-
-<label>Loan amount:
-  <input type="number" #balance />
-</label>
-<label>Term/Duration of Loan:
-  <input type="number" #term />
-</label>
-<label>Interest:
-  <input type="number"#interest />
-</label>
-<button (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
-  Add Loan
-</button>
-
-<table *ngFor="let loan of loans; let i = index">
-  <caption>Loan {{i+1}}<button (click) = "deleteLoan(loan)">X</button></caption>
-  <tr>
-    <th>Month</th>
-    <th>Interest</th>
-    <th>Principal</th>
-    <th>Remaining Balance</th>
-  </tr>
-  <tbody>
-    <tr *ngFor="let entry of loan.payments">
-      <td>{{entry.month}}</td>
-      <td>${{entry.interestPayment}}</td>
-      <td>${{entry.principalPayment}}</td>
-      <td class="balance">${{entry.remainingBalance}}</td>
+<div class='page-view'>
+  <div class='page-header'>
+    <div class='title-container flex'>
+      <h2>Table View</h2>
+    </div>
+  </div>
+  <div class='input-container'>
+    <div class='input-wrapper left'>
+      <div class='flex'>
+        <label>Loan amount:
+          <input type="number" #balance />
+        </label>
+      </div>
+    </div>
+    <div class='input-wrapper'>
+      <div class='flex'>
+        <label>Term/Duration of Loan:
+          <input type="number" #term />
+        </label>
+      </div>
+    </div>
+    <div class='input-wrapper'>
+      <div class='flex'>
+        <label>Interest:
+          <input type="number"#interest />
+        </label>
+      </div>
+    </div>
+    <div class='input-wrapper'>
+      <div class='flex'>
+        <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
+          Add Loan
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class='tables-container'>
+  <table *ngFor="let loan of loans; let i = index">
+    <caption>Loan {{i+1}}<button class='ex' (click) = "deleteLoan(loan)">X</button></caption>
+    <tr>
+      <th>Month</th>
+      <th>Interest</th>
+      <th>Principal</th>
+      <th>Remaining Balance</th>
     </tr>
-  </tbody>
-</table>
-
-<table *ngIf="loans.length > 1">
-  <caption>Aggregate pool</caption>
-  <tr>
-    <th>Month</th>
-    <th>Interest</th>
-    <th>Principal</th>
-    <th>Remaining Balance</th>
-  </tr>
-  <tbody>
-    <tr *ngFor="let entry of aggregate?.payments">
-      <td>{{entry.month}}</td>
-      <td>${{entry.interestPayment}}</td>
-      <td>${{entry.principalPayment}}</td>
-      <td class="balance">${{entry.remainingBalance}}</td>
+    <tbody>
+      <tr *ngFor="let entry of loan.payments">
+        <td>{{entry.month}}</td>
+        <td>${{entry.interestPayment}}</td>
+        <td>${{entry.principalPayment}}</td>
+        <td class="balance">${{entry.remainingBalance}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table *ngIf="loans.length > 1">
+    <caption>Aggregate pool</caption>
+    <tr>
+      <th>Month</th>
+      <th>Interest</th>
+      <th>Principal</th>
+      <th>Remaining Balance</th>
     </tr>
-  </tbody>
+    <tbody>
+      <tr *ngFor="let entry of aggregate?.payments">
+        <td>{{entry.month}}</td>
+        <td>${{entry.interestPayment}}</td>
+        <td>${{entry.principalPayment}}</td>
+        <td class="balance">${{entry.remainingBalance}}</td>
+      </tr>
+    </tbody>
+  
+  </table>
+</div>
 
-</table>
+</div>

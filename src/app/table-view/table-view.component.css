@@ -15,6 +15,55 @@ tbody tr:nth-child(odd) {
       width: 150px;
   }
 
-  table{
+  table {
       margin-top: 30px;
   }
+
+  .input-wrapper {
+      height: 80px;
+      display: inline-flex;
+      width: 320px;
+  }
+
+  .input-wrapper input {
+      width: 100px;
+  }
+
+  .input-wrapper button {
+      padding: 5px 7px;
+      border-radius: 22px;
+      background-color: white;
+      color: rgb(54, 54, 68);
+      cursor: pointer;
+  }
+
+  .input-wrapper button:hover {
+    padding: 5px 7px;
+    border-radius: 22px;
+    background-color: rgb(54, 54, 68);
+    color: white;
+}
+
+  
+
+  .input-container {
+      display: flex;
+      justify-content: space-around;
+      width: 78vw;
+  }
+
+  .tables-container {
+      overflow: scroll;
+      height: 600px;
+  }
+
+.ex {
+    margin-left: 5px;
+    padding: 1px 3px;
+    cursor: pointer;
+    border-radius: 24px;
+}
+.ex:hover {
+    background-color: red;
+    color: white;
+}
