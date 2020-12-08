@@ -8,7 +8,7 @@
 <label>Interest:
   <input type="number"#interest />
 </label>
-<button (click)="newLoan(balance.value, term.value, interest.value);">
+<button (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
   Add Loan
 </button>
 
@@ -30,7 +30,7 @@
   </tbody>
 </table>
 
-<table >
+<table *ngIf="loans.length > 1">
   <caption>Aggregate pool</caption>
   <tr>
     <th>Month</th>

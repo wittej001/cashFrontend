@@ -9,10 +9,10 @@ import { LoanService } from '../loan.service'
 })
 export class TableViewComponent implements OnInit {
   //Ask Dale why we need to initialize all of these but didn't have to in the tutorial
-  private AllData? : Loan[];
+  private AllData : Loan[] = [];
   
   
-  loans? : Loan[];
+  loans : Loan[] = [];
    
   aggregate? : Loan;
 
@@ -32,12 +32,16 @@ export class TableViewComponent implements OnInit {
   deleteLoan(loan : Loan){
     this.loans = this.loans?.filter(l => l !== loan);
     this.loanSerivce.deleteLoan(loan).subscribe();
+    this.getAllData();
   }
 
   getAllData() : void{
     this.loanSerivce.getAllData()
     .subscribe(AllData => this.AllData = AllData);
-    this.aggregate = this.AllData?.pop();
+
+    if (this.AllData.length > 1){
+      this.aggregate = this.AllData?.pop();
+    }
     this.loans = this.AllData;
   }
 }
