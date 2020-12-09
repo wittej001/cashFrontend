@@ -14,7 +14,7 @@
     </div>
     <div class='input-wrapper'>
       <div class='flex'>
-        <label>Term/Duration of Loan:
+        <label>Duration of Loan:
           <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
         </label>
       </div>
@@ -35,7 +35,8 @@
     </div>
   </div>
   <div class='tables-container'>
-  <table *ngFor="let loan of loans; let i = index">
+  <div class='table-container' *ngFor="let loan of loans; let i = index">
+  <table>
     <caption>Loan {{i+1}}<button class='ex' (click) = "deleteLoan(loan)">X</button></caption>
     <tr>
       <th>Month</th>
@@ -52,7 +53,8 @@
       </tr>
     </tbody>
   </table>
-  
+</div>
+<div class='table-container'>
   <table *ngIf="loans.length > 1">
     <caption>Aggregate pool</caption>
     <tr>
@@ -71,4 +73,6 @@
     </tbody>
   
   </table>
+</div>
+
 </div>

@@ -17,8 +17,9 @@
 }
 
 .page-header {
-    width: 90%;
-    margin: 0 5%;
+    width: 70vw;
+    margin: 0 4.5vw;
+    border-bottom: solid rgb(54, 54, 68) 1px;
 
 }
 
@@ -26,7 +27,8 @@
     margin-top: 50px;
     height: 75px;
     width: 350px;
-    border-bottom: solid rgb(54, 54, 68);
+    font-size: 26px;
+    color: rgb(54, 54, 68);
 }
 
 @font-face {

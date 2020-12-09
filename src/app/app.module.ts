@@ -7,13 +7,15 @@ import { LoanDetailComponent } from './loan-detail/loan-detail.component';
 import { TableViewComponent } from './table-view/table-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoanViewComponent } from './loan-view/loan-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoanDetailComponent,
     TableViewComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoanViewComponent
   ],
   imports: [
     BrowserModule,

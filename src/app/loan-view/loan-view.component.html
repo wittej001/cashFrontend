@@ -1,0 +1,70 @@
+<div class='page-view'>
+    <div class='page-header'>
+        <div class='title-container flex'>
+          <h2>Loan View</h2>
+        </div>
+      </div>
+      <div class='input-container'>
+        <div class='input-wrapper left'>
+          <div class='flex'>
+            <label>Loan amount:
+              <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
+            </label>
+          </div>
+        </div>
+        <div class='input-wrapper'>
+          <div class='flex'>
+            <label>Duration of Loan:
+              <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
+            </label>
+          </div>
+        </div>
+        <div class='input-wrapper'>
+          <div class='flex'>
+            <label>Interest:
+              <input type="number"#interest />
+            </label>
+          </div>
+        </div>
+        <div class='input-wrapper'>
+          <div class='flex'>
+            <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
+              Add Loan
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class='listItem-container'>
+        <table>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Term
+              </th>
+              <th>
+                Principal
+              </th>
+              <th>
+                Rate
+              </th>
+              <th>
+
+              </th>
+              <th>
+
+              </th>
+            </tr>
+            <tbody>
+            <tr *ngFor="let loan of loans; let i = index">
+                <td>{{ loan.id }}</td>
+                <td>{{ loan.term }}</td>
+                <td>{{ loan.principal }}</td>
+                <td>{{ loan.rate }}</td>
+                <td class='small'><button class='ex' (click) = "deleteLoan(loan)">X</button></td>
+                <td class='small'><button class='add' (click) = "deleteLoan(loan)">+</button></td>
+            </tr>
+          </tbody>
+        </table>
+<div>
