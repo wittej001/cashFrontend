@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loan } from '../Loan';
-import { LoanService } from '../loan.service'
+import { LoanService } from '../loan.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table-view',
@@ -15,10 +16,13 @@ export class TableViewComponent implements OnInit {
    
   aggregate? : Loan;
 
-  constructor(private loanSerivce : LoanService) { }
+  constructor(private loanSerivce : LoanService, private router : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAllData();
+    this.router.queryParams.subscribe(params => {
+      let ids = params._ids;
+      ids ? this.getAllData(ids) : this.getAllData();
+    });
   }
 
   newLoan(principal: string, term: string, rate: string){
@@ -45,8 +49,8 @@ export class TableViewComponent implements OnInit {
     }
   }
 
-  getAllData() : void{
-    this.loanSerivce.getAllData()
+  getAllData(ids : any = null) : void{
+    this.loanSerivce.getAllData(ids)
     .subscribe(AllData => {
       this.AllData = AllData
       if (this.AllData.length > 1){

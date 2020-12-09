@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Loan } from './Loan';
 
@@ -12,6 +12,7 @@ export class LoanService {
 
   private url = 'https://localhost:5001/api/LoanItems';  // URL to web api
   private cashflowUrl = 'https://localhost:5001/api/LoanItems/AllCashFlows';
+  private specCashflowUrl = 'https://localhost:5001/api/LoanItems/Cashflows';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,8 +20,15 @@ export class LoanService {
   constructor(private http: HttpClient) { }
   
   /** GET loans from the server */
-  getAllData(): Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.cashflowUrl)
+  getAllData(ids: any = null): Observable<Loan[]> {
+    let url = ids ?  this.specCashflowUrl : this.cashflowUrl;
+    let params;
+    if (url === this.specCashflowUrl) {
+      params = new HttpParams().append('_ids', ids)
+    } else {
+      params = new HttpParams()
+    }
+    return this.http.get<Loan[]>(url, {params: params})
       .pipe(
         tap(_ => this.log('fetched loans')),
         catchError(this.handleError<Loan[]>('getLoans', []))

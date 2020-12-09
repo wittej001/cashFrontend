@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loan } from '../Loan';
 import { LoanService } from '../loan.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loan-view',
@@ -15,7 +16,9 @@ export class LoanViewComponent implements OnInit {
    
   aggregate? : Loan;
 
-  constructor(private loanSerivce : LoanService) { }
+  loansToDisplay : number[] = [];
+
+  constructor(private loanSerivce : LoanService, private router : Router) { }
 
   ngOnInit(): void {
     this.getAllData();
@@ -34,6 +37,15 @@ export class LoanViewComponent implements OnInit {
       });
     }
     
+  }
+
+  addQue(id : number){
+    this.loansToDisplay.push(id); 
+  }
+
+  navigateToTableView() {
+    let ids = this.loansToDisplay.join();
+    this.router.navigate(['/table-view'], { queryParams: { _ids: ids } });
   }
 
   deleteLoan(loan : Loan){
