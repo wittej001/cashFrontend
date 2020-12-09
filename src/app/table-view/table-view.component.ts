@@ -8,9 +8,8 @@ import { LoanService } from '../loan.service'
   styleUrls: ['./table-view.component.css']
 })
 export class TableViewComponent implements OnInit {
-  //Ask Dale why we need to initialize all of these but didn't have to in the tutorial
+
   private AllData : Loan[] = [];
-  
   
   loans : Loan[] = [];
    
@@ -23,11 +22,18 @@ export class TableViewComponent implements OnInit {
   }
 
   newLoan(principal: string, term: string, rate: string){
-    //as unkown as Loan was a quickfix... 
-    this.loanSerivce.addLoan({ principal, rate, term } as unknown as Loan)
+    if (!this.checkInput(principal, term, rate)){
+      alert("Please enter valid loan inputs.")
+    }else if (!this.checkTotalTerms(term)){
+      alert("Terms exceed total limit.")
+    }
+    else{
+      this.loanSerivce.addLoan({ principal, rate, term } as unknown as Loan)
       .subscribe(() => 
         {this.getAllData();
       });
+    }
+    
   }
 
   deleteLoan(loan : Loan){
@@ -50,5 +56,37 @@ export class TableViewComponent implements OnInit {
 
     
   }
-}
 
+  private checkTotalTerms(term : string) : boolean{
+    const limit = 10000;
+    const termNum = Number.parseFloat(term)
+    let totalMonths : number = termNum;
+    for (let loan of this.loans){
+      totalMonths += loan.term;
+    }
+    if(totalMonths > limit){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  
+  private checkInput(principal: string, term: string, rate: string) : boolean {  
+    const principalNum = Number.parseFloat(principal)
+    const termNum = Number.parseFloat(term)
+    const rateNum = Number.parseFloat(rate)
+    
+    if (principalNum <= 0){
+      return false
+    } 
+    else if (termNum <= 0 || !Number.isInteger(termNum)){
+      return false
+    }
+    else if (rateNum <= 0 || rateNum > 100){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+}
