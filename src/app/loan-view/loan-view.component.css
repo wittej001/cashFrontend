@@ -106,3 +106,40 @@ tbody tr:nth-child(odd) {
 .listItem-container table {
     width: 90%;
 }
+
+.display-cashflows-descr {
+    width: 70vw;
+    margin: 0 4.5vw;
+    display: flex;
+    align-items: center;
+    height: 10%;
+}
+
+.descr-sub {
+    height: 100%;
+}
+.descr-sub p {
+    color: rgb(75, 75, 75);
+    padding: 0 50px;
+    text-align: center;
+}
+
+.left-descr {
+    border-right: solid rgb(200, 200, 200) 1px;
+}
+
+.descr-sub button {
+    font-size: 16px;
+    color: black;
+    border: solid rgb(100, 100, 100) 1px;
+    background-color: rgb(230, 230, 230);
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.descr-sub button:hover {
+    background-color: rgb(200, 200, 200);
+    
+}

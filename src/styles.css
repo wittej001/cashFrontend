@@ -24,11 +24,29 @@
 }
 
 .page-header .title-container {
-    margin-top: 50px;
-    height: 75px;
+    margin-top: 25px;
+    height: 100px;
     width: 350px;
-    font-size: 26px;
+    font-size: 30px;
     color: rgb(54, 54, 68);
+}
+.page-header .description-container {
+    margin-top: 40px;
+    height: 85px;
+    width: calc(68vw - 350px);
+    color: rgb(54, 54, 68);
+    float: right;
+}
+
+.title-container,
+.description-container {
+    display: inline-flex;
+}
+
+.description-container p {
+    font-size: 16px;
+    padding: 0 100px;
+    text-align: center;
 }
 
 @font-face {

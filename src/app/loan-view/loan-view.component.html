@@ -3,6 +3,9 @@
         <div class='title-container flex'>
           <h2>Loan View</h2>
         </div>
+        <div class='description-container flex'>
+          <p>Add specific loans to the pool to display their cashflows. When you're ready, press the <strong>Display Selected Cashflows</strong> button.</p>
+        </div>
       </div>
       <div class='input-container'>
         <div class='input-wrapper left'>
@@ -34,9 +37,16 @@
           </div>
         </div>
       </div>
-      <button (click)="navigateToTableView()">
-        Display Selected Cashflows
-      </button>
+      <div class='display-cashflows-descr'>
+        <div class='descr-sub flex'>
+          
+        </div>
+        <div class='descr-sub flex'>
+          <button (click)="navigateToTableView()">
+            Display Selected Cashflows
+          </button>
+        </div>
+      </div>
       <div class='listItem-container'>
         <table>
             <tr>
