@@ -36,43 +36,10 @@
   </div>
   <div class='tables-container'>
   <div class='table-container' *ngFor="let loan of loans; let i = index">
-  <table>
-    <caption>Loan {{i+1}}<button class='ex' (click) = "deleteLoan(loan)">X</button></caption>
-    <tr>
-      <th>Month</th>
-      <th>Interest</th>
-      <th>Principal</th>
-      <th>Remaining Balance</th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let entry of loan.payments">
-        <td>{{entry.month}}</td>
-        <td>${{entry.interestPayment.toFixed(2)}}</td>
-        <td>${{entry.principalPayment.toFixed(2)}}</td>
-        <td class="balance">${{entry.remainingBalance.toFixed(2)}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <app-loan-detail caption='Loan {{i+1}}' [loan]=loan [tableView]=this></app-loan-detail>
 </div>
 <div class='table-container'>
-  <table *ngIf="loans.length > 1">
-    <caption>Aggregate pool</caption>
-    <tr>
-      <th>Month</th>
-      <th>Interest</th>
-      <th>Principal</th>
-      <th>Remaining Balance</th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let entry of aggregate?.payments">
-        <td>{{entry.month}}</td>
-        <td>${{entry.interestPayment.toFixed(2)}}</td>
-        <td>${{entry.principalPayment.toFixed(2)}}</td>
-        <td class="balance">${{entry.remainingBalance.toFixed(2)}}</td>
-      </tr>
-    </tbody>
-  
-  </table>
+  <app-loan-detail *ngIf="loans.length > 1" caption='Aggregate pool' [loan]=aggregate [tableView]=this></app-loan-detail>
 </div>
 
 </div>

@@ -36,12 +36,13 @@ export class TableViewComponent implements OnInit {
     
   }
 
-  deleteLoan(loan : Loan){
-    this.loanSerivce.deleteLoan(loan)
-      .subscribe(() => {
-        this.getAllData();
-      });
-    
+  deleteLoan(loan : Loan | undefined){
+    if(typeof loan != 'undefined' ){
+      this.loanSerivce.deleteLoan(loan)
+        .subscribe(() => {
+          this.getAllData();
+        });
+    }
   }
 
   getAllData() : void{

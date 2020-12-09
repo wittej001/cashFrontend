@@ -1,0 +1,17 @@
+<table>
+    <caption>{{ caption }}<button *ngIf="loan?.type == 'loan'" class='ex' (click) = "tableView?.deleteLoan(loan)">X</button></caption>
+    <tr>
+      <th>Month</th>
+      <th>Interest</th>
+      <th>Principal</th>
+      <th>Remaining Balance</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let entry of loan?.payments">
+        <td>{{entry.month}}</td>
+        <td>${{entry.interestPayment.toFixed(2)}}</td>
+        <td>${{entry.principalPayment.toFixed(2)}}</td>
+        <td class="balance">${{entry.remainingBalance.toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
