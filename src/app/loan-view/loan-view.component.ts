@@ -15,6 +15,8 @@ export class LoanViewComponent implements OnInit {
    
   aggregate? : Loan;
 
+  loansToDisplay : number[] = [];
+
   constructor(private loanSerivce : LoanService) { }
 
   ngOnInit(): void {
@@ -56,7 +58,10 @@ export class LoanViewComponent implements OnInit {
 
     
   }
-
+  
+  addQue(id : number){
+    this.loansToDisplay.push(id); 
+  }
   private checkTotalTerms(term : string) : boolean{
     const limit = 10000;
     const termNum = Number.parseFloat(term)

@@ -18,7 +18,7 @@
               <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
             </label>
           </div>
-        </div>
+
         <div class='input-wrapper'>
           <div class='flex'>
             <label>Interest:
@@ -34,6 +34,12 @@
           </div>
         </div>
       </div>
+      </div>
+      <button>
+        <a href="/table-view">
+          Display Selected Cashflows
+        </a>
+      </button>
       <div class='listItem-container'>
         <table>
             <tr>
@@ -63,8 +69,8 @@
                 <td>{{ loan.principal }}</td>
                 <td>{{ loan.rate }}</td>
                 <td class='small'><button class='ex' (click) = "deleteLoan(loan)">X</button></td>
-                <td class='small'><button class='add' (click) = "deleteLoan(loan)">+</button></td>
+                <td class='small'><button class='add' (click) = "addQue(loan.id)">+</button></td>
             </tr>
           </tbody>
         </table>
-<div>
+      </div>
