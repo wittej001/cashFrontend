@@ -6,37 +6,38 @@
         <div class='description-container flex'>
           <p>Add specific loans to the pool to display their cashflows. When you're ready, press the <strong>Display Selected Cashflows</strong> button.</p>
         </div>
+        <div class='input-container'>
+          <div class='input-wrapper left'>
+            <div class='flex'>
+              <label>Loan amount:
+                <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
+              </label>
+            </div>
+          </div>
+          <div class='input-wrapper'>
+            <div class='flex'>
+              <label>Duration of Loan:
+                <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
+              </label>
+            </div>
+          </div>
+          <div class='input-wrapper'>
+            <div class='flex'>
+              <label>Interest:
+                <input type="number"#interest />
+              </label>
+            </div>
+          </div>
+          <div class='input-wrapper'>
+            <div class='flex'>
+              <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
+                Add Loan
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class='input-container'>
-        <div class='input-wrapper left'>
-          <div class='flex'>
-            <label>Loan amount:
-              <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
-            </label>
-          </div>
-        </div>
-        <div class='input-wrapper'>
-          <div class='flex'>
-            <label>Duration of Loan:
-              <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
-            </label>
-          </div>
-        </div>
-        <div class='input-wrapper'>
-          <div class='flex'>
-            <label>Interest:
-              <input type="number"#interest />
-            </label>
-          </div>
-        </div>
-        <div class='input-wrapper'>
-          <div class='flex'>
-            <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
-              Add Loan
-            </button>
-          </div>
-        </div>
-      </div>
+      
       <div class='display-cashflows-descr'>
         <div class='descr-sub flex'>
           

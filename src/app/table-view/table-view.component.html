@@ -6,37 +6,38 @@
     <div class='description-container flex'>
       <p>The cashflows for the selected loans are displayed below. If no loans were selected, the cashflows of all the loans will be displayed by default.</p>
     </div>
+    <div class='input-container'>
+      <div class='input-wrapper left'>
+        <div class='flex'>
+          <label>Loan amount:
+            <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
+          </label>
+        </div>
+      </div>
+      <div class='input-wrapper'>
+        <div class='flex'>
+          <label>Duration of Loan:
+            <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
+          </label>
+        </div>
+      </div>
+      <div class='input-wrapper'>
+        <div class='flex'>
+          <label>Interest:
+            <input type="number"#interest />
+          </label>
+        </div>
+      </div>
+      <div class='input-wrapper'>
+        <div class='flex'>
+          <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
+            Add Loan
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='input-container'>
-    <div class='input-wrapper left'>
-      <div class='flex'>
-        <label>Loan amount:
-          <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #balance />
-        </label>
-      </div>
-    </div>
-    <div class='input-wrapper'>
-      <div class='flex'>
-        <label>Duration of Loan:
-          <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" #term />
-        </label>
-      </div>
-    </div>
-    <div class='input-wrapper'>
-      <div class='flex'>
-        <label>Interest:
-          <input type="number"#interest />
-        </label>
-      </div>
-    </div>
-    <div class='input-wrapper'>
-      <div class='flex'>
-        <button class='add-loan' (click)="newLoan(balance.value, term.value, interest.value); balance.value=''; term.value=''; interest.value=''">
-          Add Loan
-        </button>
-      </div>
-    </div>
-  </div>
+  
   <div class='tables-container'>
   <div class='table-container' *ngFor="let loan of loans; let i = index">
     <app-loan-detail caption='Loan ID: {{loan.id}}' [loan]=loan [tableView]=this></app-loan-detail>

@@ -18,7 +18,7 @@ tbody tr:nth-child(odd) {
   .table-container {
       height: 500px;
       margin: 30px 50px;
-      overflow: scroll;
+      overflow: auto;
       border-bottom: solid rgb(54, 54, 68) 1px;
   }
 
@@ -51,17 +51,18 @@ tbody tr:nth-child(odd) {
   .input-container {
       display: flex;
       justify-content: space-around;
+      border-top: solid rgb(54, 54, 68) 1px;
       border-bottom: solid rgb(54, 54, 68) 1px;
-      width: 70vw;
-      margin: 0 4.5vw;
+      width: 100%;
+      margin: 0;
   }
 
   .tables-container {
       display: flex;
-      overflow: scroll;
-      height: 600px;
+      overflow: auto;
+      height: 70vh;
       flex-wrap: wrap;
-      border-bottom: solid rgb(54, 54, 68) 1px;
+     
   }
 
   .ex {
