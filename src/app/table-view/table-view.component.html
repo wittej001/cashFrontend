@@ -39,7 +39,7 @@
   </div>
   <div class='tables-container'>
   <div class='table-container' *ngFor="let loan of loans; let i = index">
-    <app-loan-detail caption='Loan {{i+1}}' [loan]=loan [tableView]=this></app-loan-detail>
+    <app-loan-detail caption='Loan ID: {{loan.id}}' [loan]=loan [tableView]=this></app-loan-detail>
 </div>
 <div class='table-container'>
   <app-loan-detail *ngIf="loans.length > 1" caption='Aggregate pool' [loan]=aggregate [tableView]=this></app-loan-detail>

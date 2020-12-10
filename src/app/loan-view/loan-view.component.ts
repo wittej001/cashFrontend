@@ -16,7 +16,7 @@ export class LoanViewComponent implements OnInit {
    
   aggregate? : Loan;
 
-  loansToDisplay : number[] = [];
+  loansToDisplay : any = {};
 
   constructor(private loanSerivce : LoanService, private router : Router) { }
 
@@ -39,18 +39,28 @@ export class LoanViewComponent implements OnInit {
     
   }
 
-  addQue(id : number){
-    this.loansToDisplay.push(id); 
+  addQue(event : any){
+    let id = event.target.id;
+    let checked = event.target.checked;
+    this.loansToDisplay[id] = checked;
   }
 
   navigateToTableView() {
-    let ids = this.loansToDisplay.join();
+    let idKeys = Object.keys(this.loansToDisplay);
+    let checkedIds : string[] = [];
+    idKeys.forEach(key => {
+      if (this.loansToDisplay[key] === true) {
+        checkedIds.push(key)
+      }
+    })
+    let ids = checkedIds.join();
     this.router.navigate(['/table-view'], { queryParams: { _ids: ids } });
   }
 
   deleteLoan(loan : Loan){
     this.loanSerivce.deleteLoan(loan)
       .subscribe(() => {
+        this.loansToDisplay[loan.id] = false;
         this.getAllData();
       });
     
@@ -64,6 +74,10 @@ export class LoanViewComponent implements OnInit {
         this.aggregate = this.AllData?.pop();
       }
       this.loans = this.AllData;
+      this.AllData.forEach((loan) => {
+        let state = this.loansToDisplay[loan.id] ? this.loansToDisplay[loan.id] : false;
+        this.loansToDisplay[loan.id] = state;
+      })
     });
 
     

@@ -96,15 +96,17 @@ tbody tr:nth-child(odd) {
 }
 
 .listItem-container {
-    width: 79vw;
-    height: 70%;
+    width: 78vw;
+    height: 60%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    overflow: scroll;
+
 }
 
 .listItem-container table {
-    width: 90%;
+    width: 60%;
 }
 
 .display-cashflows-descr {

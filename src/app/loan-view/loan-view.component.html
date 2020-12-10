@@ -51,6 +51,9 @@
         <table>
             <tr>
               <th>
+                Add to Pool
+              </th>
+              <th>
                 ID
               </th>
               <th>
@@ -65,18 +68,15 @@
               <th>
 
               </th>
-              <th>
-
-              </th>
             </tr>
             <tbody>
             <tr *ngFor="let loan of loans; let i = index">
+                <td><input type="checkbox" id={{loan.id}} [checked]="this.loansToDisplay[loan.id] === true" (change)="addQue($event)"/></td>
                 <td>{{ loan.id }}</td>
                 <td>{{ loan.term }}</td>
                 <td>{{ loan.principal }}</td>
                 <td>{{ loan.rate }}</td>
                 <td class='small'><button class='ex' (click) = "deleteLoan(loan)">X</button></td>
-                <td class='small'><button class='add' (click) = "addQue(loan.id)">+</button></td>
             </tr>
           </tbody>
         </table>
